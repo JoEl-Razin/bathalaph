@@ -1,11 +1,7 @@
 import {
   Box,
-  Button,
   Heading,
-  SimpleGrid,
-  Text,
   useColorModeValue,
-  VisuallyHidden,
 } from '@chakra-ui/react'
 
 import { Card } from '../../components/admin/login-card'

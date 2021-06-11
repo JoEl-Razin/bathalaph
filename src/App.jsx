@@ -8,6 +8,7 @@ import Dashboard from './pages/admin/Dashboard'
 import Cart from './pages/home/Cart'
 import Home from './pages/home/Home'
 import FAQs from './pages/home/FAQs'
+import ProductPage from './pages/home/ProductPage'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' exact component={Home}/>
         <Route path='/cart' component={Cart}/>
         <Route path='/faqs' component={FAQs}/>
+        <Route path='/product' component={ProductPage}/>
 
         <Route path='/admin' exact component={Admin}/>
         <Route path='/admin/dashboard' component={Dashboard}/>

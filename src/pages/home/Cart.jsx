@@ -1,11 +1,8 @@
 import {
   Box,
-  Center,
   Flex,
   Button,
   Heading,
-  Text,
-  IconButton,
   Spacer,
   Divider,
   Stack,

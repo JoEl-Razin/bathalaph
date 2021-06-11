@@ -19,7 +19,7 @@ import {
 import { Link } from 'react-router-dom'
 
 import Logo from '../../assets/bathala_logo.png'
-import ProductCart, { ProductCartPage } from './product-cart'
+import ProductCart from './product-cart'
 
 import { RiShoppingBag3Line } from 'react-icons/ri'
 import { AiOutlineArrowRight } from 'react-icons/ai'
