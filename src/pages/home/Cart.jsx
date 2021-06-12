@@ -17,6 +17,7 @@ import { ProductCartPage } from '../../components/home/product-cart'
 import Header from '../../components/home/header'
 
 export default function Cart() {
+
   return (
     <Box>
       <Box py={5} px={100} mb={5} bgColor='gray.100'>

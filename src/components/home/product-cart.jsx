@@ -93,6 +93,25 @@ export function ProductCartPage() {
   const dec = getDecrementButtonProps()
   const input = getInputProps()
 
+  const [cart, setCart] = useState([])
+  const [totalPrice, setTotalPrice] = useState()
+
+  useEffect(() => {
+    getCart()
+  }, [])
+
+  async function getCart() {
+    await fetch('https://bathalaph.herokuapp.com/cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/josn'
+      },
+    }).then((res) => res.json())
+      .then((result) => {
+        setCart(result)
+      })
+  }
+
   return (
     <Table variant='striped'>
       <Thead>
@@ -105,32 +124,40 @@ export function ProductCartPage() {
         </Tr>
       </Thead>
       <Tbody>
-        <Tr>
-          <Td>
-            <Box boxSize='125px' p={2}>
-              <Image src={Trono} objectFit='cover' boxSize='full' borderRadius='xl' />
-            </Box>
-          </Td>
-          <Td>
-            <Heading size='md'>Trono</Heading>
-            <Text color='gray.500' fontSize='md'>Fabric</Text>
-          </Td>
-          <Td>
-            <HStack w='115px' bgColor='white' borderRadius='full' p={2} border='1px' borderColor='gray.200'>
-              <Button {...dec} borderRadius='full' size='sm'>-</Button>
-              <Input variant='unstyled'{...input} />
-              <Button {...inc} borderRadius='full' size='sm'>+</Button>
-            </HStack>
-          </Td>
-          <Td>
-            <Center>
-              <Heading size='sm'>₱ 9999</Heading>
-            </Center>
-          </Td>
-          <Td>
-            <IconButton borderRadius='full' variant='ghost' colorScheme='red' icon={<CgTrash />} />
-          </Td>
-        </Tr>
+        {
+          cart.map((row) => {
+
+            return (
+              <Tr>
+                <Td>
+                  <Box boxSize='125px' p={2}>
+                    <Image src={row.img} objectFit='cover' boxSize='full' borderRadius='xl' />
+                  </Box>
+                </Td>
+                <Td>
+                  <Heading size='md'>{row.name}</Heading>
+                  <Text color='gray.500' fontSize='md'>Fabric</Text>
+                </Td>
+                <Td>
+                  <HStack w='115px' bgColor='white' borderRadius='full' p={2} border='1px' borderColor='gray.200'>
+                    <Button {...dec} borderRadius='full' size='sm'>-</Button>
+                    <Input variant='unstyled'{...input} />
+                    <Button {...inc} borderRadius='full' size='sm'>+</Button>
+                  </HStack>
+                </Td>
+                <Td>
+                  <Center>
+                    <Heading size='sm'>₱ {row.price}</Heading>
+                  </Center>
+                </Td>
+                <Td>
+                  <IconButton borderRadius='full' variant='ghost' colorScheme='red' icon={<CgTrash />} />
+                </Td>
+              </Tr>
+            )
+          })
+        }
+
       </Tbody>
     </Table>
   )

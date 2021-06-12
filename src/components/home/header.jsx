@@ -41,7 +41,10 @@ export default function Header() {
           <Link to='/faqs'>
             <Button colorScheme='gray' variant='link'>FAQs</Button>
           </Link>
-          <Button rightIcon={<RiShoppingBag3Line />} onClick={onOpen} colorScheme='red' variant='link' size='lg'>Cart</Button>
+          <Link to='/cart'>
+            <Button rightIcon={<RiShoppingBag3Line />} colorScheme='red' variant='link' size='lg'>Cart</Button>
+
+          </Link>
         </HStack>
       </Center>
 
@@ -61,11 +64,11 @@ export default function Header() {
             <Box w='100%'>
               <Flex py={5}>
                 <Heading size='sm' color='gray.600'>total price</Heading>
-                <Spacer/>
+                <Spacer />
                 <Heading size='sm'>₱ 0000</Heading>
               </Flex>
               <Flex>
-                <Spacer/>
+                <Spacer />
                 <HStack spacing='12px'>
                   {/* <Link to='/cart'>
                     <Button borderRadius='full' colorScheme='orange'>view cart</Button>
