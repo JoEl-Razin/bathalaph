@@ -36,9 +36,9 @@ export default function Products() {
       <Center m={10}>
         <HStack spacing='24px' alignItems='center'>
           {
-            products.map((row, index) => {
+            products.map((row) => {
               return (
-                <ProductCard key={row._id} img={row.image} name={row.name} price={row.price} />
+                <ProductCard key={row._id} image={row.image} name={row.name} price={row.price} />
               )
             })
           }

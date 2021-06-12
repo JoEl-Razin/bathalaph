@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   Box,
   Heading,
@@ -17,6 +18,7 @@ import {
   Tr,
   Th,
   Td,
+  Stack,
 } from '@chakra-ui/react'
 
 import { CgTrash } from 'react-icons/cg'
@@ -30,28 +32,57 @@ export default function ProductCart() {
   const dec = getDecrementButtonProps()
   const input = getInputProps()
 
+  const [cart, setCart] = useState([])
+  const [totalPrice, setTotalPrice] = useState()
+
+  useEffect(() => {
+    getCart()
+  }, [])
+
+  async function getCart() {
+    await fetch('https://bathalaph.herokuapp.com/cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/josn'
+      },
+    }).then((res) => res.json())
+      .then((result) => {
+        setCart(result)
+      })
+  }
+
   return (
-    <Flex boxShadow='base' borderRadius='xl' color='gray.700' bgColor='gray.50'>
-      <Box boxSize='100px' p={1}>
-        <Image src={Trono} objectFit='cover' boxSize='full' borderRadius='xl' />
-      </Box>
-      <Box p={3} w='calc(100% - 100px)' alignItems='center'>
-        <Flex alignItems='center' >
-          <Heading size='md'>Trono</Heading>
-          <Spacer />
-          <IconButton borderRadius='full' variant='ghost' colorScheme='red' icon={<CgTrash />} />
-        </Flex>
-        <Flex alignItems='center' >
-          <HStack w='115px' bgColor='white' borderRadius='full' p={1} border='1px' borderColor='gray.200'>
-            <Button {...dec} borderRadius='full' size='sm'>-</Button>
-            <Input variant='unstyled'{...input} />
-            <Button {...inc} borderRadius='full' size='sm'>+</Button>
-          </HStack>
-          <Spacer />
-          <Heading size='sm'>₱ 9999</Heading>
-        </Flex>
-      </Box>
-    </Flex>
+    <Stack spacing='12px'>
+      {
+        cart.map((row) => {
+          setTotalPrice(totalPrice + row.price)
+
+          return (
+            <Flex boxShadow='base' borderRadius='xl' color='gray.700' bgColor='gray.50'>
+              <Box boxSize='100px' p={1}>
+                <Image src={row.image} objectFit='cover' boxSize='full' borderRadius='xl' />
+              </Box>
+              <Box p={3} w='calc(100% - 100px)' alignItems='center'>
+                <Flex alignItems='center' >
+                  <Heading size='md'>{row.name}</Heading>
+                  <Spacer />
+                  <IconButton borderRadius='full' variant='ghost' colorScheme='red' icon={<CgTrash />} />
+                </Flex>
+                <Flex alignItems='center' >
+                  <HStack w='115px' bgColor='white' borderRadius='full' p={1} border='1px' borderColor='gray.200'>
+                    <Button {...dec} borderRadius='full' size='sm'>-</Button>
+                    <Input variant='unstyled'{...input} />
+                    <Button {...inc} borderRadius='full' size='sm'>+</Button>
+                  </HStack>
+                  <Spacer />
+                  <Heading size='sm'>₱ {row.price}</Heading>
+                </Flex>
+              </Box>
+            </Flex>
+          )
+        })
+      }
+    </Stack>
   )
 }
 
