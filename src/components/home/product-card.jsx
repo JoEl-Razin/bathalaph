@@ -16,7 +16,7 @@ export default function ProductCard({ img, name, price }) {
 
   return (
     <Box bgColor='gray.50' p={2} borderRadius='xl' boxShadow='base' _hover={{ cursor: 'pointer', bgColor: 'gray.100', transition: '0.25s'}}>
-      <Box h='20vw' w='20vw'>
+      <Box h='15vw' w='15vw'>
         <Image src={img} objectFit='cover' boxSize='full' borderRadius='xl' />
       </Box>
       <Flex alignItems='center'>
@@ -33,8 +33,6 @@ export default function ProductCard({ img, name, price }) {
             isClosable: true
           })} />
       </Flex>
-
-
     </Box>
   )
 }

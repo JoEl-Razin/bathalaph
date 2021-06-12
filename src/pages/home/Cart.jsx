@@ -6,6 +6,7 @@ import {
   Spacer,
   Divider,
   Stack,
+  HStack,
 } from '@chakra-ui/react'
 
 import { Link } from 'react-router-dom'
@@ -13,24 +14,24 @@ import { Link } from 'react-router-dom'
 import { IoIosArrowBack } from 'react-icons/io'
 
 import { ProductCartPage } from '../../components/home/product-cart'
+import Header from '../../components/home/header'
 
 export default function Cart() {
   return (
     <Box>
-
-      <Box py={5} px={100} mb={5} bgColor='red.900'>
+      <Box py={5} px={100} mb={5} bgColor='gray.100'>
         <Link to='/'>
-          <Button colorScheme='whiteAlpha' leftIcon={<IoIosArrowBack />} variant='link'>home</Button>
+          <Button colorScheme='red' leftIcon={<IoIosArrowBack />} variant='link'>home</Button>
         </Link>
       </Box>
 
-      <Flex px={[10, 100]}>
-        <Box flex='2' p={5} h='150vh'>
-          <Heading >cart</Heading>
+      <Flex px={[10, 100]} >
+        <Box p={5} w='70vw'>
+          <Heading>cart</Heading>
           <ProductCartPage />
         </Box>
 
-        <Box flex='1' p={5} borderRadius='xl' boxShadow='lg' pos='sticky'>
+        <Box p={5} borderRadius='xl' boxShadow='lg' pos='sticky' w='25vw' h='100%'>
           <Heading>summary</Heading>
           <Divider />
           <Stack spacing='24px' py={10}>
@@ -62,6 +63,7 @@ export default function Cart() {
           <Button w='100%' colorScheme='orange' borderRadius='full'>checkout</Button>
         </Box>
       </Flex>
+
     </Box>
   )
 }

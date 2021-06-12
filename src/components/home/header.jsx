@@ -38,13 +38,14 @@ export default function Header() {
       <Spacer />
       <Center flex='1'>
         <HStack spacing='24px'>
-          <Link to='/tracking'>
+          {/* <Link to='/tracking'>
             <Button colorScheme='gray' variant='link'>Track</Button>
-          </Link>
+          </Link> */}
           <Link to='/faqs'>
             <Button colorScheme='gray' variant='link'>FAQs</Button>
           </Link>
-          <IconButton onClick={onOpen} colorScheme='red' variant='link' size='lg' icon={<RiShoppingBag3Line />} />
+          <Button rightIcon={<RiShoppingBag3Line />} onClick={onOpen} colorScheme='red' variant='link' size='lg'>Cart</Button>
+          {/* <IconButton onClick={onOpen} colorScheme='red' variant='link' size='lg' icon={<RiShoppingBag3Line />} /> */}
         </HStack>
       </Center>
 
@@ -76,9 +77,7 @@ export default function Header() {
                   <Button borderRadius='full' colorScheme='green' onClick={onClose}>check out</Button>
                 </HStack>
               </Flex>
-
             </Box>
-
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

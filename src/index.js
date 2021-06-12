@@ -3,7 +3,6 @@ import '@fontsource/poppins/400.css'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 
 import { ChakraProvider } from '@chakra-ui/react'
@@ -18,3 +17,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+/* mongodb+srv://bathalaph:<password>@cluster0.ytjez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority */
